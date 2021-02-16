@@ -15,7 +15,15 @@ class HashTable :
     def insert(self,key,value):
 
         i = 0
-        while True :
+        
+        copy_exist = False 
+        for phno,_ in self.table :
+            if key == phno :
+                copy_exist = True
+                print("DUPLICATE VALUE FOUND ! CANNOT BE INSERTED IN HASH TABLE.")
+                break
+
+        while True and not copy_exist :
             
             if i > (self.length - 1) :
                 print("HASH TABLE IS FULL !")
@@ -30,7 +38,22 @@ class HashTable :
                 self.table[hash][1] = value
                 break
     
-    
+
+    def find(self,key):
+        i = 0
+        hash = self.hash_function(key,i)
+        while self.table[hash][0] != key :
+            
+            i +=1
+            if i > (self.length - 1) : 
+                print("VALUE NOT FOUND")
+                break
+            
+            hash = self.hash_function(key,i)
+
+        else :
+            print(f"KEY = {self.table[hash][0]} VALUE = {self.table[hash][1]}")
+            
 
     def display(self):
 
@@ -41,17 +64,36 @@ class HashTable :
     def print_hash_table(self) : print(self.table)
 
 if __name__ == '__main__':
+
     table_len,probing = list(map(int,input("ENTER THE LENGTH AND PROBING OF HASH TABLE -> ").rstrip().split()))
     table1 = HashTable(table_len,probing)
 
-    for i in range(3):
-        phno,name = input("ENTER THE KEY AND VALUE -> ").rstrip().split()
-        phno = int(phno)
-        table1.insert(phno,name)
+    while True :
 
-    table1.display()
-    table1.print_hash_table()
-    
+        print('''
+        ----MENU----
+        1 : INSERT
+        2 : FIND
+        3 : DISPLAY
+        0 : EXIT 
+         ''')
+        operation = int(input("ENTER THE OPERATION -> "))
+
+        if operation == 1 :
+            phno,name = input("ENTER THE KEY AND VALUE -> ").rstrip().split()
+            phno = int(phno)
+            table1.insert(phno,name)
+            table1.display()
+
+        if operation == 2 :
+            phno = int(input("ENTER THE KEY TO FIND -> "))
+            table1.find(phno)
         
+        if operation == 3 :
+            table1.display()
+            table1.print_hash_table()
+    
+        if operation == 0 : 
+            break
 
     
