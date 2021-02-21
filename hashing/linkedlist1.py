@@ -26,7 +26,7 @@ class LinkedList :
         itr = self.head
         if index != 0:
             c = 0 
-            while c != index - 1 :
+            while c != index  :
                 itr = itr.next
                 c += 1
         
@@ -35,7 +35,7 @@ class LinkedList :
             ll_str += str(itr.data) + " --> "
             itr = itr.next
         
-        print(ll_str)
+        return ll_str
         
 
     def insert_at_beginning(self,data):
@@ -57,7 +57,7 @@ class LinkedList :
 
     def check_valid_index(self,index):
         if index < 0 or index >= self.length():
-            raise Exception("Invalid index")
+            #raise Exception("Invalid index")
             return False
         return True
     
@@ -158,5 +158,5 @@ if __name__ == "__main__":
     ll.replace_value(5,222)
     m = 3
     print(f"VALUE AT {m} = {ll.get_value_at(m)}")
-
-    ll.display()
+    print(ll.display())
+    ll.display(2)
