@@ -1,5 +1,5 @@
 
-import linkedlist1 as ll
+import hashing.linkedlist1 as ll
 
 class HashTable :
 
@@ -28,11 +28,17 @@ class HashTable :
         if key : 
             hash = self.hash_function(key)
             print(f"{hash} IN HASH TABLE ")
-            self.table[hash].find_value(value)
-            return True
+            p = self.table[hash].find_value(value)
+            return (hash,p)
         
+    def delete(self,key,value):
+        if key : 
+            hash,p = self.find(key,value)
+            self.table[hash].delete_value_at(p)
+            
 
 if __name__ == "__main__":
+
     ht = HashTable(7)
 
     key,value = input("ENTER KEY AND VALUE --> ").rstrip().split()
@@ -42,8 +48,12 @@ if __name__ == "__main__":
     ht.insert(3,"goa")
     ht.insert(4,"hio")
     ht.insert(8,"testi")
-
+    #print("found = ",ht.find(4,"hio"))
     ht.display()
     print(ht.length)
 
-    ht.find(4,"hio")
+    r,c = ht.find(4,"hio")
+    print(r,c)
+
+    ht.delete(4,"fullo")
+    ht.display()

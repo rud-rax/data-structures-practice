@@ -104,11 +104,11 @@ class LinkedList :
             c+=1 
 
         if value_exist:
-            print(f"VALUE FOUND AT {c}")
+            print(f"VALUE {value} FOUND AT {c}")
             return c
                 
         else : 
-            print("VALUE NOT FOUND !")
+            print(f"VALUE {value} NOT FOUND !")
             return None
 
     def replace_value(self,old_value,new_value):
@@ -137,7 +137,19 @@ class LinkedList :
 
         return itr.data
 
-            
+    def delete_value_at(self,index):
+        if not self.check_valid_index(index) : return 
+        
+        if index == 0 :
+            self.head = self.head.next
+            return 
+
+        itr = self.head
+        for _ in range(index - 1):
+            itr = itr.next
+        itr.next = itr.next.next
+
+                 
         
         
 
@@ -160,3 +172,5 @@ if __name__ == "__main__":
     print(f"VALUE AT {m} = {ll.get_value_at(m)}")
     print(ll.display())
     ll.display(2)
+    ll.delete_value_at(0)
+    print(ll.display())

@@ -53,6 +53,7 @@ class HashTable :
 
         else :
             print(f"PHONE NUMBER = {self.table[hash][0]} NAME = {self.table[hash][1]}")
+            return hash
             
 
     def display(self):
@@ -87,7 +88,8 @@ if __name__ == '__main__':
 
         if operation == 2 :
             phno = int(input("ENTER THE PHONE NUMBER TO FIND -> "))
-            table1.find(phno)
+            hash = table1.find(phno)
+            print(table1.table[hash][1])
         
         if operation == 3 :
             table1.display()
