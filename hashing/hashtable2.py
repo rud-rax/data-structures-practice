@@ -64,6 +64,19 @@ class HashTable :
 
     def print_hash_table(self) : print(self.table)
 
+    def delete(self,key):
+        hash = self.find(key)
+        if not hash : 
+            print("INVALID KEY , COULD NOT FIND THE ELEMENT !")
+            return 
+        
+        print(f"RECORD FOUND AT {hash}")
+        self.table[hash][0] = None
+        self.table[hash][1] = None
+        print("RECORD DELETED !")
+
+
+
 if __name__ == '__main__':
 
     table_len,probing = list(map(int,input("ENTER THE LENGTH AND PROBING OF HASH TABLE -> ").rstrip().split()))
@@ -76,6 +89,7 @@ if __name__ == '__main__':
         1 : INSERT
         2 : FIND
         3 : DISPLAY
+        4 : DELETE
         0 : EXIT 
          ''')
         operation = int(input("ENTER THE OPERATION YOU WANT TO PERFORM ON HASH TABLE -> "))
@@ -93,7 +107,11 @@ if __name__ == '__main__':
         
         if operation == 3 :
             table1.display()
-            table1.print_hash_table()
+            #table1.print_hash_table()
+        
+        if operation == 4 :
+            phno = int(input("ENTER THE PHONE NUMBER TO DELETE -> "))
+            table1.delete(phno)
     
         if operation == 0 : 
             break
