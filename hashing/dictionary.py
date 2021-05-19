@@ -1,5 +1,5 @@
 
-class HashTable :
+class Dictionary :
 
     def __init__(self,length = 10 , probing = 1):
         
@@ -47,7 +47,7 @@ class HashTable :
             i +=1
             if i > (self.length - 1) : 
                 print("VALUE NOT FOUND")
-                return None
+                break
             
             hash = self.hash_function(key,i)
 
@@ -67,9 +67,9 @@ class HashTable :
     def delete(self,key):
         hash = self.find(key)
         if not hash : 
-            print("INVALID KEY !")
-            return None
-                
+            print("INVALID KEY , COULD NOT FIND THE ELEMENT !")
+            return 
+        
         print(f"RECORD FOUND AT {hash}")
         self.table[hash][0] = None
         self.table[hash][1] = None
@@ -80,7 +80,7 @@ class HashTable :
 if __name__ == '__main__':
 
     table_len,probing = list(map(int,input("ENTER THE LENGTH AND PROBING OF HASH TABLE -> ").rstrip().split()))
-    table1 = HashTable(table_len,probing)
+    dict1 = Dictionary(table_len,probing)
 
     while True :
 
@@ -92,26 +92,27 @@ if __name__ == '__main__':
         4 : DELETE
         0 : EXIT 
          ''')
+        
         operation = int(input("ENTER THE OPERATION YOU WANT TO PERFORM ON HASH TABLE -> "))
 
         if operation == 1 :
             phno,name = input("ENTER THE PHONE NUMBER AND NAME -> ").rstrip().split()
             phno = int(phno)
-            table1.insert(phno,name)
-            table1.display()
+            dict1.insert(phno,name)
+            dict1.display()
 
         if operation == 2 :
             phno = int(input("ENTER THE PHONE NUMBER TO FIND -> "))
-            hash = table1.find(phno)
-            print(table1.table[hash][1])
+            hash = dict1.find(phno)
+            print(dict1.table[hash][1])
         
         if operation == 3 :
-            table1.display()
-            #table1.print_hash_table()
+            dict1.display()
+            #dict1.print_hash_table()
         
         if operation == 4 :
             phno = int(input("ENTER THE PHONE NUMBER TO DELETE -> "))
-            table1.delete(phno)
+            dict1.delete(phno)
     
         if operation == 0 : 
             break

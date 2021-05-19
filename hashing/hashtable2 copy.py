@@ -31,30 +31,25 @@ class HashTable :
                 
             hash = self.hash_function(key,i)
 
-            if self.table[hash][0] : i += 1
+            if self.table[hash][0] :
+                prev_key = self.table[hash][0]
+                prev_value = self.table[hash][1]
+                if self.hash_function(prev_key,0) == hash :
+                    pass
+                else :
+                    
+                    self.table[hash][0] = key
+                    self.table[hash][1] = value
+                    
+                    key , prev_key = prev_key , key
+                    
+                i += 1
 
             else :
                 self.table[hash][0] = key
                 self.table[hash][1] = value
                 break
-    
-
-    def find(self,key):
-        i = 0
-        hash = self.hash_function(key,i)
-        while self.table[hash][0] != key :
-            
-            i +=1
-            if i > (self.length - 1) : 
-                print("VALUE NOT FOUND")
-                return None
-            
-            hash = self.hash_function(key,i)
-
-        else :
-            print(f"PHONE NUMBER = {self.table[hash][0]} NAME = {self.table[hash][1]}")
-            return hash
-            
+               
 
     def display(self):
 
@@ -62,18 +57,6 @@ class HashTable :
             if key :
                 print(f"{key} {value}")
 
-    def print_hash_table(self) : print(self.table)
-
-    def delete(self,key):
-        hash = self.find(key)
-        if not hash : 
-            print("INVALID KEY !")
-            return None
-                
-        print(f"RECORD FOUND AT {hash}")
-        self.table[hash][0] = None
-        self.table[hash][1] = None
-        print("RECORD DELETED !")
 
 
 
@@ -87,9 +70,9 @@ if __name__ == '__main__':
         print('''
         ----MENU----
         1 : INSERT
-        2 : FIND
-        3 : DISPLAY
-        4 : DELETE
+
+        2 : DISPLAY
+   
         0 : EXIT 
          ''')
         operation = int(input("ENTER THE OPERATION YOU WANT TO PERFORM ON HASH TABLE -> "))
@@ -100,20 +83,13 @@ if __name__ == '__main__':
             table1.insert(phno,name)
             table1.display()
 
-        if operation == 2 :
-            phno = int(input("ENTER THE PHONE NUMBER TO FIND -> "))
-            hash = table1.find(phno)
-            print(table1.table[hash][1])
         
-        if operation == 3 :
+        elif operation == 2 :
             table1.display()
             #table1.print_hash_table()
         
-        if operation == 4 :
-            phno = int(input("ENTER THE PHONE NUMBER TO DELETE -> "))
-            table1.delete(phno)
-    
-        if operation == 0 : 
+ 
+        elif operation == 0 : 
             break
 
     

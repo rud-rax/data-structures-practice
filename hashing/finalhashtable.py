@@ -12,6 +12,13 @@ class HashTable :
         hash = (key + i**self.probing) % self.length
         return hash
 
+    def mid_square(self,key):
+        str_key = str(key ** 2)
+        len_key = len(str_key)
+        mid_key = len_key // 2
+        hash = int(str_key[mid_key-1:mid_key + 2])
+        return hash
+
     def insert(self,key,value):
 
         i = 0
@@ -20,18 +27,31 @@ class HashTable :
         for phno,_ in self.table :
             if key == phno :
                 copy_exist = True
-                print("DUPLICATE PHONE NUMBER FOUND ! CANNOT BE INSERTED IN HASH TABLE.")
+                print("DUPLICATE KEY FOUND ! CANNOT BE INSERTED IN HASH TABLE.")
                 break
-
+        
+        hash = self.mid_square(key)
+        if hash > self.length :
+            hash = self.hash_function(hash,i)
+        
         while True and not copy_exist :
             
             if i > (self.length - 1) :
                 print("HASH TABLE IS FULL !")
                 break
                 
-            hash = self.hash_function(key,i)
+            if i != 0 : hash = self.hash_function(key,i)
 
-            if self.table[hash][0] : i += 1
+            if self.table[hash][0] :
+                prev_key = self.table[hash][0]
+                prev_value = self.table[hash][1]
+
+                if self.mid_square(prev_key) == hash:
+                    pass
+                else :
+                    key,prev_key = prev_key,key
+
+                i += 1
 
             else :
                 self.table[hash][0] = key
@@ -47,12 +67,12 @@ class HashTable :
             i +=1
             if i > (self.length - 1) : 
                 print("VALUE NOT FOUND")
-                return None
+                break
             
             hash = self.hash_function(key,i)
 
         else :
-            print(f"PHONE NUMBER = {self.table[hash][0]} NAME = {self.table[hash][1]}")
+            print(f"KEY = {self.table[hash][0]} NAME = {self.table[hash][1]}")
             return hash
             
 
@@ -67,9 +87,9 @@ class HashTable :
     def delete(self,key):
         hash = self.find(key)
         if not hash : 
-            print("INVALID KEY !")
-            return None
-                
+            print("INVALID KEY , COULD NOT FIND THE ELEMENT !")
+            return 
+        
         print(f"RECORD FOUND AT {hash}")
         self.table[hash][0] = None
         self.table[hash][1] = None
@@ -95,13 +115,13 @@ if __name__ == '__main__':
         operation = int(input("ENTER THE OPERATION YOU WANT TO PERFORM ON HASH TABLE -> "))
 
         if operation == 1 :
-            phno,name = input("ENTER THE PHONE NUMBER AND NAME -> ").rstrip().split()
+            phno,name = input("ENTER THE KEY AND NAME -> ").rstrip().split()
             phno = int(phno)
             table1.insert(phno,name)
             table1.display()
 
         if operation == 2 :
-            phno = int(input("ENTER THE PHONE NUMBER TO FIND -> "))
+            phno = int(input("ENTER THE KEY TO FIND -> "))
             hash = table1.find(phno)
             print(table1.table[hash][1])
         
@@ -110,7 +130,7 @@ if __name__ == '__main__':
             #table1.print_hash_table()
         
         if operation == 4 :
-            phno = int(input("ENTER THE PHONE NUMBER TO DELETE -> "))
+            phno = int(input("ENTER THE KEY TO DELETE -> "))
             table1.delete(phno)
     
         if operation == 0 : 
