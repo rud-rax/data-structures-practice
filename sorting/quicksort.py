@@ -1,6 +1,7 @@
 # arr = [10, 5, 8, 9, 3, 6, 15, 12, 16]
 arr = [14, 12, 70, 15, 95, 65, 22, 30]
-
+# arr = [1, 4, 7]
+arr = [4, 9, 13, 15, 1, 6]
 
 # def partition(l, h):
 
@@ -39,13 +40,14 @@ def partition(l, h):
     i = l
     j = h
 
-    while arr[i] <= pivot and i < j:
-        i += 1
-    while arr[j] > pivot:
-        j -= 1
+    while i < j:
+        while arr[i] <= pivot and i < j:
+            i += 1
+        while arr[j] > pivot:
+            j -= 1
 
-    if i < j:
-        arr[i], arr[j] = arr[j], arr[i]
+        if i < j:
+            arr[i], arr[j] = arr[j], arr[i]
 
     arr[j], arr[l] = arr[l], arr[j]
     return j
