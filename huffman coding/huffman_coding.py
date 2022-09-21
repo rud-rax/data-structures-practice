@@ -200,7 +200,6 @@ class MidNode(Node):
 
 if __name__ == "__main__":
     msg = "BCCDACCBDABCCDEAAEDA"
-
     hf = HuffmanCoding()
     hf.setMsg(msg)
     hf.countFrequency()
