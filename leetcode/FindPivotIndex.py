@@ -46,7 +46,7 @@ def solve1(nums) :
 
 
 if __name__ == "__main__" :
-    print(solve1([1,7,3,6,5,6]))
+    # print(solve1([1,7,3,6,5,6]))
     # solve1([1,2,3])
-    # solve1([2,1,-1])
+    solve1([2,1,-1])
     

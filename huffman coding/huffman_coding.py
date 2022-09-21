@@ -2,7 +2,7 @@ from collections import Counter
 from unicodedata import name
 from xml.dom.minicompat import NodeList
 
-from sklearn import tree
+
 
 
 class HuffmanCoding:
