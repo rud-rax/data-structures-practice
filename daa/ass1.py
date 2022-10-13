@@ -1,6 +1,5 @@
 def fibonacci(n):
-     
-    # Taking 1st two fibonacci numbers as 0 and 1
+    
     f = [0, 1]
      
      
