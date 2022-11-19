@@ -1,16 +1,10 @@
-# n = int(input())
+
 n = 7
 
-# profits = []
-# weights = []
 profits = [10, 5, 15, 7, 6, 18, 3]
 weights = [2, 3, 5, 7, 1, 4, 1]
 
-# for i in range(n):
-#     p, w = list(map(int, input().rstrip().split()))
 
-#     profits.append(p)
-#     weights.append(w)
 
 print("PROFITS - ", profits)
 print("WEIGHTS - ", weights)
