@@ -1,10 +1,14 @@
 
-n = 7
+n = 3
 
-profits = [10, 5, 15, 7, 6, 18, 3]
-weights = [2, 3, 5, 7, 1, 4, 1]
+# profits = [10, 5, 15, 7, 6, 18, 3]
+# weights = [2, 3, 5, 7, 1, 4, 1]
 
 
+
+
+profits = [60 , 100 , 120]
+weights = [10 , 20 ,30]
 
 print("PROFITS - ", profits)
 print("WEIGHTS - ", weights)
@@ -27,7 +31,7 @@ ppw = ppw[::-1]
 print("PROFITS PER WEIGHT - ", ppw)
 
 ans = 0
-m = 15
+m = 50
 for p, w in ppw:
     if m > w:
         ans += p
