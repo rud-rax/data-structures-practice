@@ -17,6 +17,9 @@ ppw = [[99999999, 1]]
 
 fppw = lambda p, w: round(p / w, 2)
 
+def fppw(p , w) :
+    return round(p / w , 2)
+
 for i in range(n):
     x = fppw(profits[i], weights[i])
 
@@ -26,6 +29,7 @@ for i in range(n):
             break
 
 
+print(ppw)
 ppw = ppw[:-1]
 ppw = ppw[::-1]
 print("PROFITS PER WEIGHT - ", ppw)
