@@ -124,42 +124,6 @@ class LinkedList:
         print("VALUE NOT FOUND !")
         return False
 
-    def reverse(self) :
-        
-        curnode = self.head
-        prenode = None
-        
-        
-        while curnode :
-            nexnode = curnode.next
-            curnode.next = prenode
-            prenode = curnode
-            curnode = nexnode            
-            
-        self.head = prenode
-           
-           
-    def middle_node(self) :
-        node = self.head
-        c = 0 
-        while node :
-            node = node.next
-            c+=1
-            
-        c = c // 2 
-        c-=1
-
-        
-        node1 = self.head
-        
-        while c > 0 :
-            c-=1
-            node1 = node1.next
-            
-        return node1.data
-        
-        
-        
 
 if __name__ == "__main__":
     l1 = LinkedList()
@@ -173,25 +137,16 @@ if __name__ == "__main__":
     l1.insert_at(7,2)
     l1.display()
     print("\nLENGTH OF LINKED LIST : ",l1.length)
-    
-    
-    
-    # l1.delete_node(l1.length -1)
-    # l1.display()
-    # l1.replace_value_at(8,2)
-    # l1.display()
-    # print("\nLENGTH OF LINKED LIST : ",l1.length)
+    l1.delete_node(l1.length -1)
+    l1.display()
+    l1.replace_value_at(8,2)
+    l1.display()
+    print("\nLENGTH OF LINKED LIST : ",l1.length)
 
-    # i = 4
-    # print(f"VALUE AT {i} IS : {l1.get_value_at(i)}")
-    # l1.insert_at_end(14)
-    # l1.insert_at(11,6)
-    # l1.display()
-    # print("\nLENGTH OF LINKED LIST : ",l1.length)
-    # l1.reverse()
-    # l1.display()
-    
-    # print(l1.middle_node())
-    
-    
- 
+    i = 4
+    print(f"VALUE AT {i} IS : {l1.get_value_at(i)}")
+    l1.insert_at_end(14)
+    l1.insert_at(11,6)
+    l1.display()
+    print("\nLENGTH OF LINKED LIST : ",l1.length)
+   
