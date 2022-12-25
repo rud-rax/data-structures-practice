@@ -124,21 +124,6 @@ class LinkedList:
         print("VALUE NOT FOUND !")
         return False
 
-    def reverse(self) :
-
-        prenode = None
-        curnode = self.head
-
-        while curnode :
-
-            nexnode = curnode.next
-            curnode.next = prenode
-            prenode = curnode
-            curnode = nexnode
-
-        self.head = prenode
-
-        
 
 if __name__ == "__main__":
     l1 = LinkedList()
@@ -164,7 +149,4 @@ if __name__ == "__main__":
     l1.insert_at(11,6)
     l1.display()
     print("\nLENGTH OF LINKED LIST : ",l1.length)
-
-    l1.reverse()
-    l1.display()
    
