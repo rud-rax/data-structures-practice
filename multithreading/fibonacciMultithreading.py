@@ -1,6 +1,7 @@
 
 import concurrent.futures
 import time
+import threading
 
 global FUNCTION_DELAY
 FUNCTION_DELAY = 0.1
@@ -58,18 +59,43 @@ def runFunction(function,*params):
     return timeTaken
 
 
+def chatGPTcode(n) :
+
+
+    def fibonacci(n):
+        time.sleep(FUNCTION_DELAY)
+        if n < 0:
+            return "Invalid input"
+        elif n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return fibonacci(n-1) + fibonacci(n-2)
+
+    # Create a new thread to compute the Fibonacci number
+    thread = threading.Thread(target=fibonacci, args=(n,))
+
+    # Start the thread
+    thread.start()
+
+    # Wait for the thread to complete
+    thread.join()
+
+
 
 if __name__ == "__main__" :
 
  
     n = 8
 
-    timeTakenStatic = runFunction(fibonacciStatic,n)
+    # timeTakenStatic = runFunction(fibonacciStatic,n)
     timeTakenMultithreading = runFunction(fibonacciMultithreading,n)
     timeTakenDynamicProgramming = runFunction(fibonacciDynamicProgramming,n)
 
 
 
+    timeTakenChatGPT = runFunction(chatGPTcode , n)
 
 
 
