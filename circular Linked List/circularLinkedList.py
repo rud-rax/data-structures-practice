@@ -1,3 +1,4 @@
+
 class Node() :
     """
     Generate a node of a linked list
@@ -84,6 +85,11 @@ def insert_at_end(head : Node, node : Node) :
     return head
 
 def delete_at_head(head : Node) :
+    """
+    Delete the head of the circular linked list
+    
+    1 head : Head of the circular linked list
+    """
     
     if not head :
         return None
@@ -96,6 +102,39 @@ def delete_at_head(head : Node) :
 
     return head
 
+def delete_at_k(head : Node , k : int) :
+    """
+    Delete the Kth node from the circular linked list
+
+    1 head : Head of the circular linked list
+    2 k : Kth node of the circular linked list , index starting from 1 
+    """
+
+    if not head :
+        return
+
+    k -=1
+
+    if k < 0 :
+        print("Invalid Value of k")
+        return head
+
+    curnode = head
+
+    if k == 0 :
+        return delete_at_head(head)
+
+    while k :
+        curnode = curnode.next
+        k-=1
+
+    curnode.data = curnode.next.data
+    curnode.next = curnode.next.next
+
+    return head
+
+    
+    
         
 
 if __name__ == "__main__" :
