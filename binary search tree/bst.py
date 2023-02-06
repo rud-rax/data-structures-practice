@@ -39,23 +39,34 @@ def iterativeSearch(value , root) :
 
 
 def insertInBST(root : TreeNode , value : int) -> TreeNode :
+
+    if not root :
+        return TreeNode(value)
+
     node = root
     while node :
-        if value < node.data :
+        if value == node.data :
+            break
+        elif value < node.data :
             if not node.left :
                 node.left = TreeNode(value)
-                return root
+                break
             else :
                 node = node.left
         else :
             if not node.right :
                 node.right = TreeNode(value)
-                return root
+                break
             else :
                 node = node.right 
     
-    node = TreeNode(value)
+
     return root
+
+def deleteInBST(root , value ) :
+    pass
+
+
 
 def display(root : TreeNode) -> None:
     node = root
@@ -84,7 +95,9 @@ if __name__ == "__main__" :
     # print(recursiveSearch(11,root))
     # print(iterativeSearch(11,root))
 
+    print("BEFORE INSERTION : ")
     display(root)
     root = insertInBST(root,1)
+    print("AFTER INSERTION : ")
     display(root)
 
