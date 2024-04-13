@@ -1,27 +1,7 @@
-from math import ceil
-
-
-def solve(k):
-
-    arr = [2, 1, 1]
-
-    i = 1
-
-    while not arr[i] > (arr[i - 1] + arr[i + 1]) / 2:
-
-        arr[i] += 1
-
-    arr.insert(-1, 1)
-    i += 1
-
-    while not arr[i] > (arr[i - 1] + arr[i + 1]) / 2:
-
-        arr[i] += 1
-
-    # arr.insert(-1, 1)
-    # i += 1
-
-    return arr
-
-
-print(solve(3))
+[TreeNode{val: 3, left: TreeNode{val: 4, left: None, right: None}, right: TreeNode{val: 5, left: TreeNode{val: 8, left: None, right: None}, right: TreeNode{val: 9, left: None, right: None}}}, TreeNode{val: 3, left: TreeNode{val: 5, left: TreeNode{val: 9, left: None, right: None}, right: TreeNode{val: 8, left: None, right: None}}, right: TreeNode{val: 4, left: None, right: None}}]
+LEFTNODE = 3 RIGHTNODE = 3
+[TreeNode{val: 4, left: None, right: None}, TreeNode{val: 5, left: TreeNode{val: 8, left: None, right: None}, right: TreeNode{val: 9, left: None, right: None}}, TreeNode{val: 5, left: TreeNode{val: 9, left: None, right: None}, right: TreeNode{val: 8, left: None, right: None}}, TreeNode{val: 4, left: None, right: None}]
+LEFTNODE = 4 RIGHTNODE = 4
+LEFTNODE = 5 RIGHTNODE = 5
+[TreeNode{val: None, left: None, right: None}, TreeNode{val: None, left: None, right: None}, TreeNode{val: None, left: None, right: None}, TreeNode{val: None, left: None, right: None}, TreeNode{val: 8, left: None, right: None}, TreeNode{val: 9, left: None, right: None}, TreeNode{val: 9, left: None, right: None}, TreeNode{val: 8, left: None, right: None}]
+LEFTNODE = None RIGHTNODE = 8

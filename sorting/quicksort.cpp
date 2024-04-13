@@ -1,16 +1,8 @@
-void quickSort(int l , int h ){
-    int x = 0 ; 
-    if (l < h) {
-        x = partition(l, h);
-        quickSort(l,x);
-        quickSort(x+1 , h);
-       
-        
-        
-    }
-}
+#include<iostream>
+#include<vector>
+using namespace std ;
 
-int partition(int l , int h ) {
+int partition( vector<int> arr,int l , int h ) {
     int i = l, j = h ;
     
     while (i < j){
@@ -26,5 +18,23 @@ int partition(int l , int h ) {
         }
     }
     arr[l],arr[j] = arr[j],arr[l] ;
-    return j
+    return j;
+}
+
+void quickSort(vector<int> arr,int l , int h ){
+    int x = 0 ; 
+    if (l < h) {
+        x = partition(arr , l, h);
+        quickSort(arr,l,x);
+        quickSort(arr, x+1 , h);
+       
+    }
+}
+
+int main() {
+    vector<int> arr{4,2,1,5,3} ;
+
+    quickSort(arr , 0 , arr.size()) ;
+    return 0 ;
+
 }
